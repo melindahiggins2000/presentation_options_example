@@ -1,0 +1,53 @@
+---
+title: "Palmer Penguins"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(palmerpenguins)
+library(knitr)
+library(ggplot2)
+library(dplyr)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+knitr::kable(summary(penguins),
+              caption = "Summary Stats of Penguins")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           y = bill_depth_mm)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+### Chart C
+
+```{r}
+library(GGally)
+penguins %>%
+  select(species,
+         bill_length_mm,
+         bill_depth_mm,
+         flipper_length_mm) %>%
+  GGally::ggpairs(mapping = aes(color = species))
+```
+
