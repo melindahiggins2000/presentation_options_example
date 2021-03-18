@@ -19,7 +19,7 @@ library(dplyr)
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Stats summary of penguins
 
 ```{r}
 knitr::kable(summary(penguins),
@@ -29,7 +29,7 @@ knitr::kable(summary(penguins),
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Regression of Bill Depth by Length
 
 ```{r}
 ggplot(penguins,
@@ -39,7 +39,7 @@ ggplot(penguins,
   geom_smooth(method = "lm")
 ```
 
-### Chart C
+### Correlations of Bill Length, Depth and Flipper Length
 
 ```{r}
 library(GGally)
